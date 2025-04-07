@@ -7,6 +7,7 @@ import { TbCreditCardPay } from "react-icons/tb";
 import SimilarProduct from "./SimilarProduct";
 import { useCartStore } from "../../store/cartStore/cartStore";
 
+
 // ==== define type for cart items ====
 interface ICartItem {
   id: number;
@@ -23,7 +24,7 @@ function ProductDetail({
   price,
   brand,
   description,
-  id,
+  id =0,
 }: IProducts) {
   const { isLoading } = useProductsState();
   //   === useState for keeping color's hex ===
@@ -37,15 +38,17 @@ function ProductDetail({
   const items = useCartStore((state) => state.items);
   // === function for handling add to cart ===
   const handle_add_to_cart = () => {
-    const newItem: ICartItem = {
-      id: id,
-      name: name,
-      price: parseFloat(price),
-      color: setColor!,
-      image: image_link,
-      qty: 1,
-    };
-    addToCart(newItem);
+    if (id !== undefined) {
+      const newItem: ICartItem = {
+        id: id,
+        name: name,
+        price: parseFloat(price),
+        color: setColor!,
+        image: image_link,
+        qty: 1,
+      };
+      addToCart(newItem)
+    }
   };
   // === check if we have same products in cart (for changing add to cart button color) ===
   const isInCart = !product_colors || product_colors.length === 0

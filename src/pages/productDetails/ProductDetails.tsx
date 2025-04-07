@@ -23,7 +23,7 @@ function ProductDetails() {
     <div className="w-full">
       <Header />
       {error ? <ErrorMessage />:(
-        <ProductDetail {...product} />
+        product && <ProductDetail {...product} />
       )}
     <Footer />
     </div>

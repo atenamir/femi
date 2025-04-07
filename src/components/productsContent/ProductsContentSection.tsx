@@ -12,7 +12,6 @@ function ProductsSectionGrid() {
     filteredList,
     getAllProduct,
     isLoading,
-    products,
   } = useProductsState();
 
   // === set pages for pagination ===
@@ -37,6 +36,8 @@ function ProductsSectionGrid() {
 
   const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
     setPage(value);
+    console.log(event.target);
+    
   };
 
   useEffect(() => {
