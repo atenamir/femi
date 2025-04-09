@@ -14,7 +14,7 @@ export const useProductsState = create<IProductState>((set, get) => ({
   filteredList: [],
   getAllProduct: async () => {
     try {
-      const response = await fetch("http://localhost:5173/products.json", {
+      const response = await fetch("/products.json", {
         cache: "no-store",
       });
 
